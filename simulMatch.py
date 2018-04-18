@@ -1,5 +1,6 @@
 from random import *
 # current functionality: not able to perform match operation
+# incorrect: should use honest strategy when alpha <0.33
 for total in range(200,2000,200):
    print total  
    for adv in range (25,40,1): # adv = percentage of blocks initially given to adversary
