@@ -4,7 +4,7 @@ import numpy as np
 import scipy.stats as stats
 
 # current functionality: not able to perform match operation
-numTrials = 200;
+numTrials = 1000;
 tempX = []
 tempY = []
 
@@ -17,13 +17,13 @@ matrix = [[[0 for i in range(numTrials)] for j in range(6)] for k in range(4)]  
 honestMatrix = [[0 for i in range(numTrials)] for j in range(6)]
 
 
-plt.ion()
+#plt.ion()
 
 #matrix[0 = adversary, 1 = honest, 2 = state[0],3 = state[1], 4=state[2], 5 = alpha][s]
 print matrix
 fracReward = 0.01
 adv = 30;
-numSlots = 1000; #number of time slots
+numSlots = 10000; #number of time slots
 count = 0; # used to count number of trials exceeding threshold
 #initialize matrix
 for s in range (0, numTrials):
@@ -114,28 +114,28 @@ for m in range (0,numSlots):
    
    #testing for multiple data sets
    
-   #density = stats.gaussian_kde(matrix[5])  
-   density0 = stats.gaussian_kde(matrix[0][5])
-   density1 = stats.gaussian_kde(matrix[1][5])
-   density2 = stats.gaussian_kde(matrix[2][5])
-   density3 = stats.gaussian_kde(matrix[3][5])
-   
-   #n, x, _ = plt.hist(matrix[5],bins = np.linspace(0,.5,200), histtype = u'step', normed = True)
-   n0, x0, _ = plt.hist(matrix[0][5],bins = np.linspace(0,1,100), histtype = u'step', normed = True)
-   n1, x1, _ = plt.hist(matrix[1][5],bins = np.linspace(0,1,100), histtype = u'step', normed = True)
-   n2, x2, _ = plt.hist(matrix[2][5],bins = np.linspace(0,1,100), histtype = u'step', normed = True)
-   n3, x3, _ = plt.hist(matrix[3][5],bins = np.linspace(0,1,100), histtype = u'step', normed = True)
-   
-   plt.clf()
-   plt.cla()
-   plt.close()
-  
-   #plt.plot(x,density(x)) 
-   plt.plot(x0, density0(x0), color ='blue')
-   plt.plot(x2, density2(x2), color = 'green')
-   plt.plot(x3, density3(x3), color= 'red')
-   plt.plot(x1, density1(x1), color = 'orange')
-  
+#density = stats.gaussian_kde(matrix[5])  
+density0 = stats.gaussian_kde(matrix[0][5])
+density1 = stats.gaussian_kde(matrix[1][5])
+density2 = stats.gaussian_kde(matrix[2][5])
+density3 = stats.gaussian_kde(matrix[3][5])
 
-   plt.show()
-   plt.pause(.001)
+#n, x, _ = plt.hist(matrix[5],bins = np.linspace(0,.5,200), histtype = u'step', normed = True)
+n0, x0, _ = plt.hist(matrix[0][5],bins = np.linspace(0,1,100), histtype = u'step', normed = True)
+n1, x1, _ = plt.hist(matrix[1][5],bins = np.linspace(0,1,100), histtype = u'step', normed = True)
+n2, x2, _ = plt.hist(matrix[2][5],bins = np.linspace(0,1,100), histtype = u'step', normed = True)
+n3, x3, _ = plt.hist(matrix[3][5],bins = np.linspace(0,1,100), histtype = u'step', normed = True)
+
+plt.clf()
+plt.cla()
+plt.close()
+
+#plt.plot(x,density(x)) 
+plt.plot(x0, density0(x0), color ='blue')
+plt.plot(x2, density2(x2), color = 'green')
+plt.plot(x3, density3(x3), color= 'red')
+plt.plot(x1, density1(x1), color = 'orange')
+
+
+plt.show()
+#plt.pause(.001)
