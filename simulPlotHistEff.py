@@ -23,12 +23,12 @@ plt.ion()
 print matrix
 fracReward = 0.01
 adv = 30;
-numSlots = 20; #number of time slots
+numSlots = 200; #number of time slots
 count = 0; # used to count number of trials exceeding threshold
 #initialize matrix
 for s in range (0, numTrials):
-   total = 10;
-   reward = (total)*fracReward
+   total = 50;
+   reward = 1;
    for t in range (0, 2):
       matrix[t][0][s]= total*(adv/100.0);
       matrix[t][1][s] = total*((100.0-adv)/100.0)
@@ -37,7 +37,7 @@ for s in range (0, numTrials):
       matrix[t][4][s] = 0;
       matrix[t][5][s] = adv/100.0;
    total = 200;
-   reward = (total)*fracReward
+   reward = 1; #(total)*fracReward
    for t in range (2, 4):
       matrix[t][0][s]= total*(adv/100.0);
       matrix[t][1][s] = total*((100.0-adv)/100.0)
@@ -62,7 +62,7 @@ for m in range (0,numSlots):
          h = matrix[t][3][s] #state[1]
          state = [-1,-1,-1]
          alpha = adversary/(honest+adversary)
-         reward = (adversary+honest)*fracReward
+         reward = 1; #(adversary+honest)*fracReward
         
          if (t%2 == 1): # adversary 
             if (alpha >= 0.33): #use selfish mining strategy
@@ -131,11 +131,11 @@ for m in range (0,numSlots):
    plt.close()
   
    #plt.plot(x,density(x)) 
-   #plt.plot(x0, density0(x0), color ='blue')
-  #plt.plot(x2, density2(x2), color = 'green')
+   plt.plot(x0, density0(x0), color ='blue')
+   plt.plot(x2, density2(x2), color = 'green')
    plt.plot(x3, density3(x3), color= 'red')
    plt.plot(x1, density1(x1), color = 'orange')
   
 
    plt.show()
-   plt.pause(.1)
+   plt.pause(.001)
